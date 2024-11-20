@@ -1,9 +1,7 @@
-```typescript
 export default function Home() {
   return (
-    
-      Job Description Tool
-    
+    <main className="min-h-screen p-4">
+      <div>Test</div>
+    </main>
   )
 }
-```
