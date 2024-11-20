@@ -1,9 +1,8 @@
-```typescript
-"use client";
+'use client';
 import React, { useState } from 'react';
 
 export default function JobDescriptionTool() {
-  const [mode, setMode] = useState('create'); // 'create' or 'compare'
+  const [mode, setMode] = useState('create');
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState('');
 
@@ -153,5 +152,3 @@ export default function JobDescriptionTool() {
     </div>
   );
 }
-```
-
