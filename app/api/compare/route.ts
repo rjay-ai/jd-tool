@@ -1,4 +1,3 @@
-```typescript
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 
@@ -16,16 +15,16 @@ export async function POST(req: Request) {
       messages: [{
         role: "user",
         content: `Compare these two job descriptions and provide a detailed analysis of:
-        1. Key overlapping responsibilities and requirements
-        2. Unique elements in each JD
-        3. Grade level comparison
-        4. Suggested level for each role
-        
-        JD 1:
-        ${jd1}
+          1. Key overlapping responsibilities and requirements
+          2. Unique elements in each JD
+          3. Grade level comparison
+          4. Suggested level for each role
+          
+          JD 1:
+          ${jd1}
 
-        JD 2:
-        ${jd2}`
+          JD 2:
+          ${jd2}`
       }]
     });
 
@@ -37,4 +36,4 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Failed to compare descriptions' }, { status: 500 });
   }
 }
-```
+Last edited just now
