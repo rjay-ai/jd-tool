@@ -1,4 +1,3 @@
-```typescript
 import { NextResponse } from 'next/server';
 import Anthropic from '@anthropic-ai/sdk';
 
@@ -16,12 +15,12 @@ export async function POST(req: Request) {
       messages: [{
         role: "user",
         content: `Create a professional job description for:
-        Title: ${jobTitle}
-        Department: ${department}
-        Responsibilities: ${responsibilities}
-        Qualifications: ${qualifications}
-        
-        Format it professionally with sections for Overview, Responsibilities, Required Qualifications, and Additional Information.`
+          Title: ${jobTitle}
+          Department: ${department}
+          Responsibilities: ${responsibilities}
+          Qualifications: ${qualifications}
+          
+          Format it professionally with sections for Overview, Responsibilities, Required Qualifications, and Additional Information.`
       }]
     });
 
@@ -33,4 +32,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Failed to generate description' }, { status: 500 });
   }
 }
-```
