@@ -18,25 +18,46 @@ export async function POST(req: Request) {
         max_tokens: 1500,
         messages: [{
           role: "user",
-          content: `Compare these two job descriptions and provide a detailed analysis of:
-            1. Key overlapping responsibilities and requirements
-            2. Unique elements in each JD
-            3. Grade level comparison
-            4. Suggested level for each role
-            
-            JD 1:
-            ${jd1}
+          content: `Compare these two job descriptions and provide a detailed analysis:
 
-            JD 2:
-            ${jd2}`
+1. Key Similarities:
+   - Responsibilities overlap
+   - Required skills and qualifications
+   - Experience level
+   
+2. Key Differences:
+   - Unique responsibilities
+   - Different skill requirements
+   - Seniority level differences
+   
+3. Level Assessment:
+   - Compare seniority levels
+   - Suggest appropriate grade
+   
+First JD:
+${jd1}
+
+Second JD:
+${jd2}
+
+Please provide a structured analysis with clear sections and bullet points.`
         }]
       })
     });
 
+    if (!response.ok) {
+      throw new Error('Failed to compare JDs');
+    }
+
     const data = await response.json();
-    return NextResponse.json({ analysis: data.content[0].text });
+    return NextResponse.json({ 
+      analysis: data.content[0].text 
+    });
   } catch (error) {
     console.error('Error:', error);
-    return NextResponse.json({ error: 'Failed to compare descriptions' }, { status: 500 });
+    return NextResponse.json(
+      { error: 'Failed to compare job descriptions. Please try again.' },
+      { status: 500 }
+    );
   }
 }
