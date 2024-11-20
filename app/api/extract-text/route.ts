@@ -1,3 +1,4 @@
+// app/api/extract-text/route.ts
 import { NextResponse } from 'next/server';
 
 export async function POST(req: Request) {
@@ -5,13 +6,12 @@ export async function POST(req: Request) {
     const formData = await req.formData();
     const file = formData.get('file') as File;
     
-    // Here you would add the actual file processing logic
-    // For now, we'll return the file name as a placeholder
+    // Here you would add actual file processing logic
+    // For now, return file name as placeholder
     return NextResponse.json({ 
-      text: `Content from ${file.name} would be extracted here.`
+      text: `Content extracted from ${file.name}`
     });
   } catch (error) {
-    console.error('Error extracting text:', error);
     return NextResponse.json(
       { error: 'Failed to extract text from file' },
       { status: 500 }
