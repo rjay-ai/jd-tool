@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
-import { Anthropic } from '@anthropic-ai/sdk';
+import anthropic from '@anthropic-ai/sdk';
 
-const anthropic = new Anthropic({
+const client = new anthropic.Client({
   apiKey: process.env.ANTHROPIC_API_KEY || ''
 });
 
@@ -9,7 +9,7 @@ export async function POST(req: Request) {
   try {
     const { jobTitle, department, responsibilities, qualifications } = await req.json();
 
-    const message = await anthropic.messages.create({
+    const response = await client.messages.create({
       model: "claude-3-sonnet-20240229",
       max_tokens: 1000,
       messages: [{
@@ -25,7 +25,7 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ 
-      jobDescription: message.content[0].text
+      jobDescription: response.content[0].text
     });
   } catch (error) {
     console.error('Error:', error);
