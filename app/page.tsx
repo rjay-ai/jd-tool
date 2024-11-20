@@ -270,3 +270,48 @@ export default function Page() {
     </div>
   );
 }
+// components/ui-components.tsx
+export function LoadingSpinner() {
+  return (
+    <div className="inline-flex items-center">
+      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+      Processing...
+    </div>
+  );
+}
+
+export function Notification({ type, message }: { type: 'success' | 'error'; message: string }) {
+  const styles = {
+    success: 'bg-green-50 text-green-800 border-green-200',
+    error: 'bg-red-50 text-red-800 border-red-200'
+  };
+
+  return (
+    <div className={`${styles[type]} p-4 rounded-lg border mb-4`}>
+      {message}
+    </div>
+  );
+}
+
+export function Button({ 
+  children, 
+  loading, 
+  ...props 
+}: { 
+  children: React.ReactNode; 
+  loading?: boolean;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>) {
+  return (
+    <button
+      {...props}
+      disabled={loading || props.disabled}
+      className={`w-full py-4 rounded-lg font-medium text-sm transition-all
+        ${loading || props.disabled
+          ? 'bg-gray-300 cursor-not-allowed'
+          : 'bg-blue-600 hover:bg-blue-700 text-white shadow-md hover:shadow-lg'
+        } ${props.className || ''}`}
+    >
+      {loading ? <LoadingSpinner /> : children}
+    </button>
+  );
+}
