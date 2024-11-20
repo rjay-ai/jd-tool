@@ -1,8 +1,11 @@
 import './globals.css'
+import { Inter } from 'next/font/google'
+
+const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-  title: 'JD Tool - Job Description Generator and Comparison',
-  description: 'Create and compare job descriptions using AI',
+  title: 'JD Tool - Professional Job Description Generator',
+  description: 'Create and compare job descriptions with AI assistance',
 }
 
 export default function RootLayout({
@@ -11,8 +14,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className="bg-gray-50">{children}</body>
+    <html lang="en" className={inter.className}>
+      <body>{children}</body>
     </html>
   )
 }
