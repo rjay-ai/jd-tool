@@ -36,4 +36,3 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: 'Failed to compare descriptions' }, { status: 500 });
   }
 }
-Last edited just now
