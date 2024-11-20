@@ -1,9 +1,8 @@
 import './globals.css'
-import type { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'JD Tool',
-  description: 'Job Description Tool',
+export const metadata = {
+  title: 'JD Tool - Job Description Generator and Comparison',
+  description: 'Create and compare job descriptions using AI',
 }
 
 export default function RootLayout({
