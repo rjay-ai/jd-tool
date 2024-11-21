@@ -22,7 +22,7 @@ export async function POST(req: Request) {
       max_tokens: 2000,
       messages: [{
         role: 'user',
-        content: `Compare these two job descriptions and provide a detailed analysis:
+        content: `Compare these job descriptions:
 
 Job Description 1:
 ${jd1}
@@ -30,19 +30,19 @@ ${jd1}
 Job Description 2:
 ${jd2}
 
-Please analyze and compare:
-1. Key responsibilities overlap
-2. Required skills and qualifications comparison
-3. Level/seniority comparison
-4. Unique aspects of each role
-5. Overall assessment of which role is more senior and why
+Analyze and provide:
+1. Key overlapping responsibilities/requirements
+2. Unique elements in each role
+3. Seniority level comparison
+4. Skills comparison
+5. Overall assessment (which role is more senior and why)
 
-Format the response clearly with sections and bullet points.`
+Format with clear sections and bullet points.`
       }]
     });
 
-    return NextResponse.json({
-      analysis: response.content[0].text
+    return NextResponse.json({ 
+      analysis: response.content[0].text 
     });
   } catch (error) {
     console.error('Comparison error:', error);
